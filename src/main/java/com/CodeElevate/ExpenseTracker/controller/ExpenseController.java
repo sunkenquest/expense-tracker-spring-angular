@@ -25,4 +25,9 @@ public class ExpenseController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllExpenses() {
+        return ResponseEntity.ok(expenseService.getAllExpenses());
+    }
 }
