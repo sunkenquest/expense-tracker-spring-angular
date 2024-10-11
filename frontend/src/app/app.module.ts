@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoNgZorroAntModule } from './DemoNgZorroAntModule';
+import { ExpenseComponent } from './components/expense/expense.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ExpenseComponent
   ],
   imports: [
     BrowserModule,
