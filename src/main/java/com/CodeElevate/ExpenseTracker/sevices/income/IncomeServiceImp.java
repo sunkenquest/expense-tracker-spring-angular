@@ -46,7 +46,7 @@ public class IncomeServiceImp implements IncomeService {
         if(optionalIncome.isPresent()){
             return saveOrUpdateIncome(optionalIncome.get(), incomeDTO);
         } else {
-            throw new EntityNotFoundException("Income not found"+ id);
+            throw new EntityNotFoundException("Income not found for id: "+ id);
         }
     }
 
@@ -56,7 +56,7 @@ public class IncomeServiceImp implements IncomeService {
         if(optionalIncome.isPresent()){
             return optionalIncome.get().getIncomeDto();
         } else {
-            throw new EntityNotFoundException("Income not found"+ id);
+            throw new EntityNotFoundException("Income not found for id: "+ id);
         }
     }
 
@@ -65,7 +65,7 @@ public class IncomeServiceImp implements IncomeService {
         if(optionalIncome.isPresent()){
             incomeRepository.deleteById(id);
         } else {
-            throw new EntityNotFoundException("Income not found"+ id);
+            throw new EntityNotFoundException("Income not found for id: "+ id);
         }
     }
 }
