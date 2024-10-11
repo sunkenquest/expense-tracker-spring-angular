@@ -6,6 +6,10 @@ import com.CodeElevate.ExpenseTracker.repository.IncomeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class IncomeServiceImp implements IncomeService {
@@ -24,5 +28,12 @@ public class IncomeServiceImp implements IncomeService {
         income.setDescription(incomeDTO.getDescription());
 
         return incomeRepository.save(income);
+    }
+
+    public List<IncomeDTO> getAllIncomes() {
+        return incomeRepository.findAll().stream()
+                .sorted(Comparator.comparing(Income::getDate).reversed())
+                .map(Income::getIncomeDto)
+                .collect(Collectors.toList());
     }
 }
