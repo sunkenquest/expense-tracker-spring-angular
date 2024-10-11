@@ -21,6 +21,9 @@ export class ExpenseComponent {
     "Travelling",
     "Other",
   ]
+
+  expenses: any;
+
   constructor(
     private fb: FormBuilder,
     private expenseService: ExpenseService,
@@ -28,6 +31,7 @@ export class ExpenseComponent {
   }
 
   ngOnInit() {
+    this.getAllExpenses();
     this.expenseForm = this.fb.group({
       title: [null, Validators.required],
       amount: [null, Validators.required],
@@ -43,6 +47,13 @@ export class ExpenseComponent {
 
     }, error => {
       this.message.error("Error while posting expense", { nzDuration: 5000 })
+    })
+  }
+
+  getAllExpenses() {
+    this.expenseService.getAllExpenses().subscribe(res => {
+      this.expenses = res
+      console.log(this.expenses);
     })
   }
 }
