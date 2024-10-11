@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { ExpenseService } from 'src/app/services/expense/expense.service';
 
 @Component({
   selector: 'app-expense',
@@ -8,7 +10,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ExpenseComponent {
   expenseForm!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  listOfCategory: any[] = [
+    "Food",
+    "Education",
+    "Groceries",
+    "Health",
+    "Subcriptions",
+    "Takeaways",
+    "Clothing",
+    "Travelling",
+    "Other",
+  ]
+  constructor(
+    private fb: FormBuilder,
+    private expenseService: ExpenseService,
+    private message: NzMessageService,) {
+  }
 
   ngOnInit() {
     this.expenseForm = this.fb.group({
@@ -17,6 +34,15 @@ export class ExpenseComponent {
       date: [null, Validators.required],
       category: [null, Validators.required],
       description: [null, Validators.required],
+    })
+  }
+
+  submitForm() {
+    this.expenseService.postExpense(this.expenseForm.value).subscribe(res => {
+      this.message.success("Expense posted successfully", { nzDuration: 5000 })
+
+    }, error => {
+      this.message.error("Error while posting expense", { nzDuration: 5000 })
     })
   }
 }
