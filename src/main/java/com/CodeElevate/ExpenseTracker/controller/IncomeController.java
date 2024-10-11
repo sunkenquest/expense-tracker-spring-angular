@@ -3,6 +3,7 @@ package com.CodeElevate.ExpenseTracker.controller;
 import com.CodeElevate.ExpenseTracker.dto.IncomeDTO;
 import com.CodeElevate.ExpenseTracker.entity.Income;
 import com.CodeElevate.ExpenseTracker.sevices.income.IncomeService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -31,5 +32,16 @@ public class IncomeController {
     @GetMapping("/all")
     public ResponseEntity<?> getAllIncomes(){
         return ResponseEntity.ok(incomeService.getAllIncomes());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateIncome(@PathVariable Long id, @RequestBody IncomeDTO incomeDto){
+        try {
+            return ResponseEntity.ok(incomeService.updateIncome(id, incomeDto));
+        } catch (EntityNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 }
