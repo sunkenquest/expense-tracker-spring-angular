@@ -54,7 +54,8 @@
                         <div nz-col nzSpan="6" style="font-size: 15px;">
                             <span nz-icon nzType="edit" nzTheme="fill" style="color: blue; cursor: pointer;"></span>
                             <span nz-icon nzType="delete" nzTheme="fill"
-                                style="color: red; margin-left: 10px; cursor: pointer;"></span>
+                                style="color: red; margin-left: 10px; cursor: pointer;"
+                                (click)="deleteExpense(expense.id)"></span>
                         </div>
                     </div>
                 </div>

@@ -56,4 +56,13 @@ export class ExpenseComponent {
       console.log(this.expenses);
     })
   }
+
+  deleteExpense(id: number) {
+    this.expenseService.deleteExpense(id).subscribe(res => {
+      this.message.success("Expense deleted successfully", { nzDuration: 5000 })
+      this.getAllExpenses();
+    }, error => {
+      this.message.error("Error while deleting expense", { nzDuration: 5000 })
+    })
+  }
 }
