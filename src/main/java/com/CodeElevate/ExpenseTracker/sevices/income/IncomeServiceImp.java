@@ -59,4 +59,13 @@ public class IncomeServiceImp implements IncomeService {
             throw new EntityNotFoundException("Income not found"+ id);
         }
     }
+
+    public void deleteIncomeById(Long id) {
+        Optional<Income> optionalIncome = incomeRepository.findById(id);
+        if(optionalIncome.isPresent()){
+            incomeRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Income not found"+ id);
+        }
+    }
 }
