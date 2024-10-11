@@ -2,6 +2,7 @@ package com.CodeElevate.ExpenseTracker.dto;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -12,7 +13,7 @@ public class IncomeDTO {
 
     private Integer amount;
 
-    private LocalDateTime date;
+    private LocalDate date;
 
     private String category;
 

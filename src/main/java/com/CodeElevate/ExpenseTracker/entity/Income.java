@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,7 +22,7 @@ public class Income {
 
     private Integer amount;
 
-    private LocalDateTime date;
+    private LocalDate date;
 
     private String category;
 
