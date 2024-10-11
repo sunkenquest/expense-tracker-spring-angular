@@ -1,4 +1,4 @@
-package com.CodeElevate.ExpenseTracker.sevices.expense;
+package com.CodeElevate.ExpenseTracker.repository;
 
 import com.CodeElevate.ExpenseTracker.entity.Income;
 import org.springframework.data.jpa.repository.JpaRepository;
