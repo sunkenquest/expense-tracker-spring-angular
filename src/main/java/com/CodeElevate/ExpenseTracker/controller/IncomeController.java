@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/income")
 @RequiredArgsConstructor
@@ -24,5 +26,10 @@ public class IncomeController {
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllIncomes(){
+        return ResponseEntity.ok(incomeService.getAllIncomes());
     }
 }
