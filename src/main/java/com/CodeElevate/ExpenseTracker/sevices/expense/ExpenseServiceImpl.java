@@ -44,7 +44,7 @@ public class ExpenseServiceImpl implements ExpenseService{
         if(optionalExpense.isPresent()){
             return optionalExpense.get();
         } else {
-            throw new EntityNotFoundException("Expense not found"+ id);
+            throw new EntityNotFoundException("Expense not found for id: "+ id);
         }
     }
 
@@ -54,7 +54,7 @@ public class ExpenseServiceImpl implements ExpenseService{
         if(optionalExpense.isPresent()){
             return saveOrUpdateExpense(optionalExpense.get(), expenseDTO);
         } else {
-            throw new EntityNotFoundException("Expense not found"+ id);
+            throw new EntityNotFoundException("Expense not found for id: "+ id);
         }
     }
 
@@ -63,7 +63,7 @@ public class ExpenseServiceImpl implements ExpenseService{
         if(optionalExpense.isPresent()){
             expenseRepository.deleteById(id);
         }else {
-            throw new EntityNotFoundException("Expense not found"+ id);
+            throw new EntityNotFoundException("Expense not found for id: "+ id);
         }
     }
 }
