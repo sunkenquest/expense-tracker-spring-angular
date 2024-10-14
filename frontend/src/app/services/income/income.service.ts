@@ -29,4 +29,8 @@ export class IncomeService {
     return this.http.put(BASIC_URL + `api/income/${id}`, incomeDTO
     )
   }
+
+  deleteIncome(id: number): Observable<any> {
+    return this.http.delete(BASIC_URL + `api/income/${id}`)
+  }
 }
