@@ -46,4 +46,9 @@ export class IncomeComponent {
       this.message.error("Error while getting all income", { nzDuration: 5000 })
     })
   }
+
+  updateIncome(id: number) {
+    this.router.navigateByUrl(`/income/${id}/edit`);
+  }
+
 }

@@ -51,7 +51,8 @@
                             <span nz-icon nzType="comment" nzTheme="outline"></span> {{ income.category }}
                         </div>
                         <div nz-col nzSpan="6" style="font-size: 15px;">
-                            <span nz-icon nzType="edit" nzTheme="fill" style="color: blue; cursor: pointer;"></span>
+                            <span nz-icon nzType="edit" nzTheme="fill" style="color: blue; cursor: pointer;"
+                                (click)="updateIncome(income.id)"></span>
                             <span nz-icon nzType="delete" nzTheme="fill"
                                 style="color: red; margin-left: 10px; cursor: pointer;"></span>
                         </div>
