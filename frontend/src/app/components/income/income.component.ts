@@ -34,7 +34,6 @@ export class IncomeComponent {
   submitForm() {
     this.incomeService.postIncome(this.incomeForm.value).subscribe(res => {
       this.message.success("Income posted successfully", { nzDuration: 5000 })
-      this.getAllIncomes();
     }, error => {
       this.message.error("Error while posting expense", { nzDuration: 5000 })
     })
