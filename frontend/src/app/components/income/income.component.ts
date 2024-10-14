@@ -10,7 +10,7 @@ import { IncomeService } from 'src/app/services/income/income.service';
   styleUrls: ['./income.component.scss']
 })
 export class IncomeComponent {
-
+  incomes: any;
   incomeForm!: FormGroup;
   listOfCategory: any[] = ["Salary", "Freelancing", "Investments", "Stocks", "Bitcoin", "Bank Transfer", "YouTube", "Other"];
 
@@ -20,8 +20,8 @@ export class IncomeComponent {
     private incomeService: IncomeService,
     private router: Router) { }
 
-
   ngOnInit() {
+    this.getAllIncomes()
     this.incomeForm = this.fb.group({
       title: [null, Validators.required],
       amount: [null, Validators.required],
@@ -34,9 +34,17 @@ export class IncomeComponent {
   submitForm() {
     this.incomeService.postIncome(this.incomeForm.value).subscribe(res => {
       this.message.success("Income posted successfully", { nzDuration: 5000 })
-
+      this.getAllIncomes();
     }, error => {
       this.message.error("Error while posting expense", { nzDuration: 5000 })
+    })
+  }
+
+  getAllIncomes() {
+    this.incomeService.getAllIncomes().subscribe(res => {
+      this.incomes = res
+    }, error => {
+      this.message.error("Error while getting all income", { nzDuration: 5000 })
     })
   }
 }

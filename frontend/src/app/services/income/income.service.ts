@@ -16,4 +16,8 @@ export class IncomeService {
   postIncome(incomeDTO: any): Observable<any> {
     return this.http.post(BASIC_URL + "api/income", incomeDTO)
   }
+
+  getAllIncomes(): Observable<any> {
+    return this.http.get(BASIC_URL + "api/income/all")
+  }
 }
