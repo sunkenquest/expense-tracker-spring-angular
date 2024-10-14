@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoNgZorroAntModule } from './DemoNgZorroAntModule';
 import { ExpenseComponent } from './components/expense/expense.component';
 import { UpdateExpenseComponent } from './components/update-expense/update-expense.component';
+import { IncomeComponent } from './components/income/income.component';
 
 registerLocaleData(en);
 
@@ -20,7 +21,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     ExpenseComponent,
-    UpdateExpenseComponent
+    UpdateExpenseComponent,
+    IncomeComponent
   ],
   imports: [
     BrowserModule,
