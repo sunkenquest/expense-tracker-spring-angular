@@ -46,7 +46,7 @@ export class ExpenseComponent {
   submitForm() {
     this.expenseService.postExpense(this.expenseForm.value).subscribe(res => {
       this.message.success("Expense posted successfully", { nzDuration: 5000 })
-
+      this.getAllExpenses();
     }, error => {
       this.message.error("Error while posting expense", { nzDuration: 5000 })
     })
