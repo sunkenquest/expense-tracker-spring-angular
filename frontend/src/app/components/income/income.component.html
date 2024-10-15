@@ -46,7 +46,7 @@
                     <div nz-row>
                         <div nz-col nzSpan="18">
                             <span nz-icon nzType="message" nzTheme="outline"></span> {{ income.title }} -
-                            <span nz-icon nz ype="dollar" nzTheme="outline"></span> {{ income.amount }} -
+                            <span nz-icon nzType="dollar" nzTheme="outline"></span> {{ income.amount }} -
                             <span nz-icon nzType="clock-circle" nzTheme="outline"></span> {{ income.date }} -
                             <span nz-icon nzType="comment" nzTheme="outline"></span> {{ income.category }}
                         </div>
@@ -61,4 +61,7 @@
             </nz-card>
         </div>
     </div>
+    <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" [nzPageSize]="pageSize"
+        (nzPageIndexChange)="onPageIndexChange($event)" id="demo">
+    </nz-pagination>
 </div>
