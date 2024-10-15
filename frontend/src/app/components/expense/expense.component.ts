@@ -23,6 +23,9 @@ export class ExpenseComponent {
     "Other",
   ]
 
+  pageIndex: number = 1;
+  pageSize: number = 10;
+  total: number = 0;
   expenses: any;
 
   constructor(
@@ -33,7 +36,7 @@ export class ExpenseComponent {
   }
 
   ngOnInit() {
-    this.getAllExpenses();
+    this.getAllExpenses(this.pageIndex);
     this.expenseForm = this.fb.group({
       title: [null, Validators.required],
       amount: [null, Validators.required],
@@ -46,15 +49,16 @@ export class ExpenseComponent {
   submitForm() {
     this.expenseService.postExpense(this.expenseForm.value).subscribe(res => {
       this.message.success("Expense posted successfully", { nzDuration: 5000 })
-      this.getAllExpenses();
+      this.getAllExpenses(this.pageIndex);
     }, error => {
       this.message.error("Error while posting expense", { nzDuration: 5000 })
     })
   }
 
-  getAllExpenses() {
-    this.expenseService.getAllExpenses().subscribe(res => {
-      this.expenses = res
+  getAllExpenses(page: number) {
+    this.expenseService.getAllExpenses(page - 1).subscribe(res => {
+      this.expenses = res.content;
+      this.total = res.totalElements;
       console.log(this.expenses);
     })
   }
@@ -66,9 +70,14 @@ export class ExpenseComponent {
   deleteExpense(id: number) {
     this.expenseService.deleteExpense(id).subscribe(res => {
       this.message.success("Expense deleted successfully", { nzDuration: 5000 })
-      this.getAllExpenses();
+      this.getAllExpenses(this.pageIndex);
     }, error => {
       this.message.error("Error while deleting expense", { nzDuration: 5000 })
     })
+  }
+
+  onPageIndexChange(pageIndex: number) {
+    this.pageIndex = pageIndex;
+    this.getAllExpenses(pageIndex);
   }
 }

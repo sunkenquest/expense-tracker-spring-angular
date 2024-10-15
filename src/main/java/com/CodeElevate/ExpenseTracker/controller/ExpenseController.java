@@ -19,17 +19,17 @@ public class ExpenseController {
 
     @PostMapping
     public ResponseEntity<?> postExpense(@RequestBody ExpenseDTO dto) {
-       Expense createdExpense = expenseService.postExpense(dto);
-        if(createdExpense != null) {
+        Expense createdExpense = expenseService.postExpense(dto);
+        if (createdExpense != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(createdExpense);
-        }else {
+        } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllExpenses() {
-        return ResponseEntity.ok(expenseService.getAllExpenses());
+    public ResponseEntity<?> getAllExpenses(@RequestParam(defaultValue = "0") int page) {
+        return ResponseEntity.ok(expenseService.getAllExpenses(page));
     }
 
     @GetMapping("/{id}")

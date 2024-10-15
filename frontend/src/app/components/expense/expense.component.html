@@ -63,4 +63,7 @@
             </nz-card>
         </div>
     </div>
+    <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" [nzPageSize]="pageSize"
+        (nzPageIndexChange)="onPageIndexChange($event)" id="demo">
+    </nz-pagination>
 </div>
