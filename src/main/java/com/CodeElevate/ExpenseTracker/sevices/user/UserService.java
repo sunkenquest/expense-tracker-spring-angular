@@ -1,11 +1,14 @@
 package com.CodeElevate.ExpenseTracker.sevices.user;
 
-import com.CodeElevate.ExpenseTracker.dto.ExpenseDTO;
-import com.CodeElevate.ExpenseTracker.dto.UserDTO;
-import com.CodeElevate.ExpenseTracker.entity.Expense;
+import org.springframework.http.ResponseEntity;
+
+import com.CodeElevate.ExpenseTracker.dto.ResponseDTO;
+import com.CodeElevate.ExpenseTracker.dto.UserLoginDTO;
+import com.CodeElevate.ExpenseTracker.dto.UserRegisterDTO;
 import com.CodeElevate.ExpenseTracker.entity.User;
 
 public interface UserService {
-    User postUser(UserDTO userDTO);
+    User registerUser(UserRegisterDTO userDTO);
 
+    ResponseEntity<ResponseDTO> loginUser(UserLoginDTO userDTO);
 }

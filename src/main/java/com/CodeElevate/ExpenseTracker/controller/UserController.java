@@ -1,9 +1,8 @@
 package com.CodeElevate.ExpenseTracker.controller;
 
-
-import com.CodeElevate.ExpenseTracker.dto.ExpenseDTO;
-import com.CodeElevate.ExpenseTracker.dto.UserDTO;
-import com.CodeElevate.ExpenseTracker.entity.Expense;
+import com.CodeElevate.ExpenseTracker.dto.ResponseDTO;
+import com.CodeElevate.ExpenseTracker.dto.UserLoginDTO;
+import com.CodeElevate.ExpenseTracker.dto.UserRegisterDTO;
 import com.CodeElevate.ExpenseTracker.entity.User;
 import com.CodeElevate.ExpenseTracker.sevices.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +18,22 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping
-    public ResponseEntity<?> postUser(@RequestBody UserDTO dto) {
-        User createdUser = userService.postUser(dto);
-        if(createdUser != null) {
+    @PostMapping("/register")
+    public ResponseEntity<?> registerUser(@RequestBody UserRegisterDTO dto) {
+        User createdUser = userService.registerUser(dto);
+        if (createdUser != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-        }else {
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<?> loginUser(@RequestBody UserLoginDTO dto) {
+        ResponseEntity<ResponseDTO> createdUser = userService.loginUser(dto);
+        if (createdUser != null) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+        } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
