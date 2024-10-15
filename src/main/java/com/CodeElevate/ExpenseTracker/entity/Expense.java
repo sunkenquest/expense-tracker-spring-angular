@@ -8,6 +8,8 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
+import com.CodeElevate.ExpenseTracker.dto.ExpenseDTO;
+
 @Entity
 @Data
 public class Expense {
@@ -25,4 +27,17 @@ public class Expense {
     private LocalDate date;
 
     private Integer amount;
+
+    public ExpenseDTO getExpenseDto() {
+        ExpenseDTO expenseDTO = new ExpenseDTO();
+
+        expenseDTO.setId(id);
+        expenseDTO.setTitle(title);
+        expenseDTO.setAmount(amount);
+        expenseDTO.setDate(date);
+        expenseDTO.setCategory(category);
+        expenseDTO.setDescription(description);
+
+        return expenseDTO;
+    }
 }

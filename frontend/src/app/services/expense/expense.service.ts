@@ -15,8 +15,8 @@ export class ExpenseService {
     return this.http.post(BASIC_URL + "api/expense", expenseDto)
   }
 
-  getAllExpenses(): Observable<any> {
-    return this.http.get(BASIC_URL + "api/expense/all")
+  getAllExpenses(page: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/expense/all?page=${page}`)
   }
 
   deleteExpense(id: number): Observable<any> {
