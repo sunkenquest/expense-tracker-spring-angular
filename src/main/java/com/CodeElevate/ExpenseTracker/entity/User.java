@@ -2,7 +2,7 @@ package com.CodeElevate.ExpenseTracker.entity;
 
 import java.time.LocalDate;
 
-import com.CodeElevate.ExpenseTracker.dto.UserDTO;
+import com.CodeElevate.ExpenseTracker.dto.UserRegisterDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +23,8 @@ public class User {
     private String bio;
     private LocalDate createdAt;
 
-    public UserDTO geUserDto() {
-        UserDTO userDTO = new UserDTO();
+    public UserRegisterDTO geUserDto() {
+        UserRegisterDTO userDTO = new UserRegisterDTO();
 
         userDTO.setId(id);
         userDTO.setUsername(username);
