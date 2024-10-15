@@ -5,12 +5,9 @@ import com.CodeElevate.ExpenseTracker.entity.Income;
 import com.CodeElevate.ExpenseTracker.sevices.income.IncomeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/income")
@@ -20,7 +17,7 @@ public class IncomeController {
     private final IncomeService incomeService;
 
     @PostMapping
-    public ResponseEntity<?> postIncome(@RequestBody IncomeDTO incomeDto){
+    public ResponseEntity<?> postIncome(@RequestBody IncomeDTO incomeDto) {
         Income createdIncome = incomeService.postIncome(incomeDto);
         if (createdIncome != null) {
             return ResponseEntity.status(HttpStatus.CREATED).body(createdIncome);
@@ -30,12 +27,12 @@ public class IncomeController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllIncomes(){
+    public ResponseEntity<?> getAllIncomes() {
         return ResponseEntity.ok(incomeService.getAllIncomes());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateIncome(@PathVariable Long id, @RequestBody IncomeDTO incomeDto){
+    public ResponseEntity<?> updateIncome(@PathVariable Long id, @RequestBody IncomeDTO incomeDto) {
         try {
             return ResponseEntity.ok(incomeService.updateIncome(id, incomeDto));
         } catch (EntityNotFoundException ex) {
@@ -46,7 +43,7 @@ public class IncomeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getIncomeById(@PathVariable Long id){
+    public ResponseEntity<?> getIncomeById(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(incomeService.getIncomeById(id));
         } catch (EntityNotFoundException ex) {
@@ -57,7 +54,7 @@ public class IncomeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteIncomeById(@PathVariable Long id){
+    public ResponseEntity<?> deleteIncomeById(@PathVariable Long id) {
         try {
             incomeService.deleteIncomeById(id);
             return ResponseEntity.ok(null);

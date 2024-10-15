@@ -1,7 +1,6 @@
 package com.CodeElevate.ExpenseTracker.sevices.income;
 
 import com.CodeElevate.ExpenseTracker.dto.IncomeDTO;
-import com.CodeElevate.ExpenseTracker.entity.Expense;
 import com.CodeElevate.ExpenseTracker.entity.Income;
 import com.CodeElevate.ExpenseTracker.repository.IncomeRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -43,29 +42,29 @@ public class IncomeServiceImp implements IncomeService {
     public Income updateIncome(Long id, IncomeDTO incomeDTO) {
         Optional<Income> optionalIncome = incomeRepository.findById(id);
 
-        if(optionalIncome.isPresent()){
+        if (optionalIncome.isPresent()) {
             return saveOrUpdateIncome(optionalIncome.get(), incomeDTO);
         } else {
-            throw new EntityNotFoundException("Income not found for id: "+ id);
+            throw new EntityNotFoundException("Income not found for id: " + id);
         }
     }
 
     public IncomeDTO getIncomeById(Long id) {
         Optional<Income> optionalIncome = incomeRepository.findById(id);
 
-        if(optionalIncome.isPresent()){
+        if (optionalIncome.isPresent()) {
             return optionalIncome.get().getIncomeDto();
         } else {
-            throw new EntityNotFoundException("Income not found for id: "+ id);
+            throw new EntityNotFoundException("Income not found for id: " + id);
         }
     }
 
     public void deleteIncomeById(Long id) {
         Optional<Income> optionalIncome = incomeRepository.findById(id);
-        if(optionalIncome.isPresent()){
+        if (optionalIncome.isPresent()) {
             incomeRepository.deleteById(id);
         } else {
-            throw new EntityNotFoundException("Income not found for id: "+ id);
+            throw new EntityNotFoundException("Income not found for id: " + id);
         }
     }
 }

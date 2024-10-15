@@ -1,7 +1,6 @@
 package com.CodeElevate.ExpenseTracker.controller;
 
 import com.CodeElevate.ExpenseTracker.dto.GraphDTO;
-import com.CodeElevate.ExpenseTracker.dto.StatsDTO;
 import com.CodeElevate.ExpenseTracker.sevices.stats.StatsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +18,12 @@ public class StatsController {
     private final StatsService statsService;
 
     @GetMapping("/chart")
-    public ResponseEntity<GraphDTO>getChartDetails(){
+    public ResponseEntity<GraphDTO> getChartDetails() {
         return ResponseEntity.ok(statsService.getChartData());
     }
 
     @GetMapping
-    public ResponseEntity<?> getStats(){
+    public ResponseEntity<?> getStats() {
         return ResponseEntity.ok(statsService.getStats());
     }
 }

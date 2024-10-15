@@ -8,7 +8,6 @@ import com.CodeElevate.ExpenseTracker.repository.ExpenseRepository;
 import com.CodeElevate.ExpenseTracker.repository.IncomeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +20,7 @@ public class StatsServiceImp implements StatsService {
     private final IncomeRepository incomeRepository;
     private final ExpenseRepository expenseRepository;
 
-    public GraphDTO getChartData(){
+    public GraphDTO getChartData() {
         LocalDate endDate = LocalDate.now();
         LocalDate startDate = endDate.minusDays(27);
 
@@ -32,7 +31,7 @@ public class StatsServiceImp implements StatsService {
         return graphDTO;
     }
 
-    public StatsDTO getStats(){
+    public StatsDTO getStats() {
         Double totalIncome = incomeRepository.sumAllAmounts();
         Double totalExpense = expenseRepository.sumAllAmounts();
 
