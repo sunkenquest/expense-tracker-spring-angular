@@ -5,9 +5,12 @@ import com.CodeElevate.ExpenseTracker.entity.Income;
 import com.CodeElevate.ExpenseTracker.repository.IncomeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,11 +35,17 @@ public class IncomeServiceImp implements IncomeService {
         return incomeRepository.save(income);
     }
 
-    public List<IncomeDTO> getAllIncomes() {
-        return incomeRepository.findAll().stream()
-                .sorted(Comparator.comparing(Income::getDate).reversed())
+    public Page<IncomeDTO> getAllIncomes(Integer page) {
+        PageRequest pageable = PageRequest.of(page, 10);
+
+        Page<Income> incomePage = incomeRepository.findAll(pageable);
+
+        List<IncomeDTO> incomeDTOs = incomePage.getContent().stream()
                 .map(Income::getIncomeDto)
                 .collect(Collectors.toList());
+
+        return new PageImpl<>(incomeDTOs, pageable, incomePage.getTotalElements());
+
     }
 
     public Income updateIncome(Long id, IncomeDTO incomeDTO) {
