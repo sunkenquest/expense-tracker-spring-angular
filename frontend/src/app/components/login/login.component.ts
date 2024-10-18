@@ -24,11 +24,12 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       username: [null, Validators.required],
       password: [null, Validators.required],
-      remember: [null, Validators.required],
+      remember: [false, Validators.required],
     })
   }
 
   submitForm() {
+    console.log(this.loginForm.value);
     this.loginService.postLogin(this.loginForm.value).subscribe(res => {
       this.message.success("Login successfully", { nzDuration: 5000 })
       this.router.navigate(['/dashboard']);
