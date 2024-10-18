@@ -6,9 +6,11 @@ import { IncomeComponent } from './components/income/income.component';
 import { UpdateIncomeComponent } from './components/update-income/update-income.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "expense", component: ExpenseComponent },
   { path: "income", component: IncomeComponent },

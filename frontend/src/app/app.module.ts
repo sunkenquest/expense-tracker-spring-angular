@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SiderComponent } from './components/sider/sider.component';
 import { LoginComponent } from './components/login/login.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { RegisterComponent } from './components/register/register.component';
 
 registerLocaleData(en);
 
@@ -33,6 +34,7 @@ registerLocaleData(en);
     SiderComponent,
     LoginComponent,
     ConfirmModalComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
