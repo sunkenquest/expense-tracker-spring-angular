@@ -18,9 +18,12 @@
             <span nz-icon nzType="fall"></span>
             <span>Expense</span>
         </li>
-        <li nz-menu-item (click)="onLogoutClick()">
-            <span nz-icon nzType="logout" nzTheme="outline"></span> <span>Logout</span>
-        </li>
+        <div class="logout-container">
+            <li nz-menu-item (click)="onLogoutClick()">
+                <span nz-icon nzType="logout" nzTheme="outline"></span>
+                <span>Logout</span>
+            </li>
+        </div>
     </ul>
 </nz-sider>
 <app-confirmation-modal (confirm)="onConfirmLogout()"></app-confirmation-modal>
