@@ -55,6 +55,7 @@ public class UserServiceImp implements UserService {
             User user = optionalUser.get();
 
             if (passwordEncoder.matches(loginUserDTO.getPassword(), user.getPassword())) {
+                userRepository.save(user);
                 ResponseDTO response = new ResponseDTO("Login successful");
                 return ResponseEntity.ok(response);
 

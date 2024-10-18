@@ -14,5 +14,5 @@ public class UserRegisterDTO {
     private LocalDate birthday;
     private String bio;
     private LocalDate createdAt;
-    private String lastLogin;
+    private LocalDate lastLogin;
 }

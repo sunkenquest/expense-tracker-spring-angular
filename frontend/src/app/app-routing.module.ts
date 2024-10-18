@@ -5,8 +5,10 @@ import { UpdateExpenseComponent } from './components/update-expense/update-expen
 import { IncomeComponent } from './components/income/income.component';
 import { UpdateIncomeComponent } from './components/update-income/update-income.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
+  { path: "", component: LoginComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "expense", component: ExpenseComponent },
   { path: "income", component: IncomeComponent },

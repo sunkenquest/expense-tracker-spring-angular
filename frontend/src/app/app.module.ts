@@ -16,6 +16,9 @@ import { UpdateExpenseComponent } from './components/update-expense/update-expen
 import { IncomeComponent } from './components/income/income.component';
 import { UpdateIncomeComponent } from './components/update-income/update-income.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SiderComponent } from './components/sider/sider.component';
+import { LoginComponent } from './components/login/login.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 registerLocaleData(en);
 
@@ -27,6 +30,9 @@ registerLocaleData(en);
     IncomeComponent,
     UpdateIncomeComponent,
     DashboardComponent,
+    SiderComponent,
+    LoginComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     BrowserModule,
