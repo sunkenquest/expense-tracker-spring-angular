@@ -15,4 +15,5 @@ public class UserRegisterDTO {
     private String bio;
     private LocalDate createdAt;
     private LocalDate lastLogin;
+    private boolean remember;
 }
