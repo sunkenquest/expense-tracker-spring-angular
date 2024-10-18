@@ -1,0 +1,26 @@
+<nz-sider>
+    <div class="logo">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/83852126?v=4" alt="avatar">
+        <div class="user-info">
+            <strong>m_.kco</strong>
+        </div>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+        <li nz-menu-item routerLink="/dashboard">
+            <span nz-icon nzType="dashboard"></span>
+            <span>Dashboard</span>
+        </li>
+        <li nz-menu-item routerLink="/income">
+            <span nz-icon nzType="fund"></span>
+            <span>Income</span>
+        </li>
+        <li nz-menu-item routerLink="/expense">
+            <span nz-icon nzType="fall"></span>
+            <span>Expense</span>
+        </li>
+        <li nz-menu-item (click)="onLogoutClick()">
+            <span nz-icon nzType="logout" nzTheme="outline"></span> <span>Logout</span>
+        </li>
+    </ul>
+</nz-sider>
+<app-confirmation-modal (confirm)="onConfirmLogout()"></app-confirmation-modal>

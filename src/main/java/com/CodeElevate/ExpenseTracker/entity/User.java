@@ -22,6 +22,7 @@ public class User {
     private LocalDate birthday;
     private String bio;
     private LocalDate createdAt;
+    private LocalDate lastLogin;
 
     public UserRegisterDTO geUserDto() {
         UserRegisterDTO userDTO = new UserRegisterDTO();
@@ -34,6 +35,7 @@ public class User {
         userDTO.setBirthday(birthday);
         userDTO.setBio(bio);
         userDTO.setCreatedAt(createdAt);
+        userDTO.setLastLogin(lastLogin);
         return userDTO;
     }
 }
