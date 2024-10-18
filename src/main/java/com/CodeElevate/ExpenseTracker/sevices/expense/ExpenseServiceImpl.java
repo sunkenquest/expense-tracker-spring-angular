@@ -1,9 +1,7 @@
 package com.CodeElevate.ExpenseTracker.sevices.expense;
 
 import com.CodeElevate.ExpenseTracker.dto.ExpenseDTO;
-import com.CodeElevate.ExpenseTracker.dto.IncomeDTO;
 import com.CodeElevate.ExpenseTracker.entity.Expense;
-import com.CodeElevate.ExpenseTracker.entity.Income;
 import com.CodeElevate.ExpenseTracker.repository.ExpenseRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +11,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
