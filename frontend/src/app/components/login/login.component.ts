@@ -36,4 +36,8 @@ export class LoginComponent {
       this.message.error("Error while logging in", { nzDuration: 5000 })
     })
   }
+
+  navigateToRegister(): void {
+    this.router.navigate(['/register']);
+  }
 }
