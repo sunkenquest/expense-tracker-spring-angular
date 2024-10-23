@@ -1,0 +1,10 @@
+package com.sunkenquest.ExpenseTracker.dto;
+
+import lombok.Data;
+
+@Data
+public class UserLoginDTO {
+    private String username;
+    private String password;
+    private boolean remember;
+}
