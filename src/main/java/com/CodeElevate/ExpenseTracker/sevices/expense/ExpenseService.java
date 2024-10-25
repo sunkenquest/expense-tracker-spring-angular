@@ -9,7 +9,7 @@ public interface ExpenseService {
 
     Expense postExpense(ExpenseDTO expenseDTO);
 
-    Page<ExpenseDTO> getAllExpenses(Integer page);
+    Page<ExpenseDTO> getAllExpenses(Integer page, String sortType);
 
     Expense getExpenseById(Long id);
 
