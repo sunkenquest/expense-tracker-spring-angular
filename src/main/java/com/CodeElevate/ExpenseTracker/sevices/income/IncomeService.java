@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 public interface IncomeService {
     Income postIncome(IncomeDTO incomeDTO);
 
-    Page<IncomeDTO> getAllIncomes(Integer page);
+    Page<IncomeDTO> getAllIncomes(Integer page, String sortType);
 
     Income updateIncome(Long id, IncomeDTO incomeDTO);
 

@@ -16,6 +16,7 @@ export class IncomeComponent {
   pageIndex: number = 1;
   pageSize: number = 10;
   total: number = 0;
+  sort: string = "asc";
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +25,7 @@ export class IncomeComponent {
     private router: Router) { }
 
   ngOnInit() {
-    this.getAllIncomes(this.pageIndex);
+    this.getAllIncomes(this.pageIndex, this.sort);
     this.incomeForm = this.fb.group({
       title: [null, Validators.required],
       amount: [null, Validators.required],
@@ -37,14 +38,16 @@ export class IncomeComponent {
   submitForm() {
     this.incomeService.postIncome(this.incomeForm.value).subscribe(res => {
       this.message.success("Income posted successfully", { nzDuration: 5000 })
-      this.getAllIncomes(this.pageIndex);
+      this.getAllIncomes(this.pageIndex, this.sort);
     }, error => {
       this.message.error("Error while posting income", { nzDuration: 5000 });
     });
   }
 
-  getAllIncomes(page: number) {
-    this.incomeService.getAllIncomes(page - 1).subscribe(res => {
+  getAllIncomes(page: number, sort: string) {
+    this.pageIndex = page;
+    this.sort = sort;
+    this.incomeService.getAllIncomes(page - 1, sort).subscribe(res => {
       this.incomes = res.content;
       this.total = res.totalElements;
     }, error => {
@@ -59,14 +62,18 @@ export class IncomeComponent {
   deleteIncome(id: number) {
     this.incomeService.deleteIncome(id).subscribe(res => {
       this.message.success("Income deleted successfully", { nzDuration: 5000 });
-      this.getAllIncomes(this.pageIndex);
+      this.getAllIncomes(this.pageIndex, this.sort);
     }, error => {
       this.message.error("Error while deleting income", { nzDuration: 5000 });
     });
   }
 
-  onPageIndexChange(pageIndex: number) {
+  onPageIndexChange(pageIndex: number, sort: string | null) {
     this.pageIndex = pageIndex;
-    this.getAllIncomes(pageIndex);
+    if (sort == null) {
+      sort = this.sort;
+    }
+
+    this.getAllIncomes(pageIndex, sort);
   }
 }

@@ -27,8 +27,10 @@ public class IncomeController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllIncomes(@RequestParam(defaultValue = "0") int page) {
-        return ResponseEntity.ok(incomeService.getAllIncomes(page));
+    public ResponseEntity<?> getAllIncomes(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "asc") String sort) {
+        return ResponseEntity.ok(incomeService.getAllIncomes(page, sort));
     }
 
     @PutMapping("/{id}")
