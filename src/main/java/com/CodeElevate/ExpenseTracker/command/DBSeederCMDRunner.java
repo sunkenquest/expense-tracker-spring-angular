@@ -15,6 +15,11 @@ public class DBSeederCMDRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        seederService.seedDatabase();
+        if (args.length > 0 && "seed".equals(args[0])) {
+            seederService.seedDatabase();
+            System.out.println("Database has been seeded.");
+        } else {
+            System.out.println("Skipping database seeding.");
+        }
     }
 }
