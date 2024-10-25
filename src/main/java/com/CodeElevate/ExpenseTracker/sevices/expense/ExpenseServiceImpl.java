@@ -47,10 +47,10 @@ public class ExpenseServiceImpl implements ExpenseService {
                 sort = Sort.by(Sort.Direction.ASC, "title");
                 break;
             case "tohigher":
-                sort = Sort.by(Sort.Direction.DESC, "amount");
+                sort = Sort.by(Sort.Direction.ASC, "amount");
                 break;
             case "tolower":
-                sort = Sort.by(Sort.Direction.ASC, "amount");
+                sort = Sort.by(Sort.Direction.DESC, "amount");
                 break;
             default:
                 sort = Sort.by(Sort.Direction.ASC, "title");
