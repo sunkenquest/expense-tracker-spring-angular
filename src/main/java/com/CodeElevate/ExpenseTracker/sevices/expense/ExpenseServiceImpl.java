@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,8 +36,28 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expenseRepository.save(expense);
     }
 
-    public Page<ExpenseDTO> getAllExpenses(Integer page) {
-        PageRequest pageable = PageRequest.of(page, 10);
+    public Page<ExpenseDTO> getAllExpenses(Integer page, String sortType) {
+        Sort sort = Sort.by("title");
+
+        switch (sortType.toLowerCase()) {
+            case "desc":
+                sort = Sort.by(Sort.Direction.DESC, "title");
+                break;
+            case "asc":
+                sort = Sort.by(Sort.Direction.ASC, "title");
+                break;
+            case "tohigher":
+                sort = Sort.by(Sort.Direction.DESC, "amount");
+                break;
+            case "tolower":
+                sort = Sort.by(Sort.Direction.ASC, "amount");
+                break;
+            default:
+                sort = Sort.by(Sort.Direction.ASC, "title");
+                break;
+        }
+
+        PageRequest pageable = PageRequest.of(page, 10, sort);
 
         Page<Expense> expensPage = expenseRepository.findAll(pageable);
 
@@ -45,7 +66,6 @@ public class ExpenseServiceImpl implements ExpenseService {
                 .collect(Collectors.toList());
 
         return new PageImpl<>(expenseDTOs, pageable, expensPage.getTotalElements());
-
     }
 
     public Expense getExpenseById(Long id) {

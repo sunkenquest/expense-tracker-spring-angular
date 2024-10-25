@@ -28,8 +28,10 @@ public class ExpenseController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllExpenses(@RequestParam(defaultValue = "0") int page) {
-        return ResponseEntity.ok(expenseService.getAllExpenses(page));
+    public ResponseEntity<?> getAllExpenses(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "asc") String sort) {
+        return ResponseEntity.ok(expenseService.getAllExpenses(page, sort));
     }
 
     @GetMapping("/{id}")

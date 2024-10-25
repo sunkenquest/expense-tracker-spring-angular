@@ -42,6 +42,20 @@
             </nz-card>
         </div>
         <div nz-col nzFlex="3" style="margin-left: 20px;">
+            <div style="margin-left: 500px;">
+                <a nz-dropdown [nzDropdownMenu]="menu">
+                    Sort by:
+                    <span nz-icon nzType="down"></span>
+                </a>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                    <ul nz-menu nzSelectable>
+                        <li nz-menu-item (click)="onPageIndexChange(pageIndex, 'asc')">A-Z</li>
+                        <li nz-menu-item (click)="onPageIndexChange(pageIndex, 'desc')">Z-A</li>
+                        <li nz-menu-item (click)="onPageIndexChange(pageIndex, 'tolower')">Amount: High to Low</li>
+                        <li nz-menu-item (click)="onPageIndexChange(pageIndex, 'tohigher')">Amount: Low to High</li>
+                    </ul>
+                </nz-dropdown-menu>
+            </div>
             <nz-card nzType="inner" style="margin-top:16px" nzTitle="Past Expenses">
                 <div *ngFor="let expense of expenses" style="margin-bottom: 16px;">
                     <div nz-row>
@@ -64,6 +78,6 @@
         </div>
     </div>
     <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" [nzPageSize]="pageSize"
-        (nzPageIndexChange)="onPageIndexChange($event)" id="demo" style="padding: 16px;">
+        (nzPageIndexChange)="onPageIndexChange($event, null)" id="demo" style="padding: 16px;">
     </nz-pagination>
 </div>
