@@ -26,4 +26,6 @@
         </div>
     </ul>
 </nz-sider>
-<app-confirmation-modal (confirm)="onConfirmLogout()"></app-confirmation-modal>
+<app-confirmation-modal [title]="'Confirm Delete'" [message]="'Are you sure you want to delete this item?'"
+    (confirm)="onConfirmLogout()">
+</app-confirmation-modal>

@@ -1,23 +1,26 @@
-// confirmation-modal.component.ts
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-confirmation-modal',
   template: `
     <nz-modal
       [(nzVisible)]="isVisible"
-      nzTitle="Confirm Logout"
+      [nzTitle]="title"
       (nzOnCancel)="handleCancel()"
       (nzOnOk)="handleOk()"
     >
       <ng-container *nzModalContent>
-        <p>Are you sure you want to logout?</p>
+        <p>{{ message }}</p>
       </ng-container>
     </nz-modal>
   `
 })
 export class ConfirmModalComponent {
   isVisible = false;
+
+  @Input() title: string;
+  @Input() message: string;
+
   @Output() confirm = new EventEmitter<void>();
 
   show(): void {
