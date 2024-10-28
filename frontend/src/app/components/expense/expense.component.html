@@ -70,9 +70,12 @@
                                 (click)="updateExpense(expense.id)"></span>
                             <span nz-icon nzType="delete" nzTheme="fill"
                                 style="color: red; margin-left: 10px; cursor: pointer;"
-                                (click)="deleteExpense(expense.id)"></span>
+                                (click)="onDeleteClick()"></span>
                         </div>
                     </div>
+                    <app-confirmation-modal [title]="'Confirm Delete'"
+                        [message]="'Are you sure you want to delete this item?'" (confirm)="deleteExpense(expense.id)">
+                    </app-confirmation-modal>
                 </div>
             </nz-card>
         </div>

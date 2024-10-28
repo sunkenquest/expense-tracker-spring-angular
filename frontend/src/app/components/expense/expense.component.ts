@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ExpenseService } from 'src/app/services/expense/expense.service';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-expense',
@@ -28,6 +29,7 @@ export class ExpenseComponent {
   total: number = 0;
   sort: string = "asc";
   expenses: any;
+  @ViewChild(ConfirmModalComponent) modal!: ConfirmModalComponent;
 
   constructor(
     private fb: FormBuilder,
@@ -85,5 +87,9 @@ export class ExpenseComponent {
     }
 
     this.getAllExpenses(pageIndex, sort);
+  }
+
+  onDeleteClick(): void {
+    this.modal.show();
   }
 }
