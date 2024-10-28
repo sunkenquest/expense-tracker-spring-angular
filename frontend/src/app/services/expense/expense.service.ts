@@ -12,23 +12,23 @@ export class ExpenseService {
   constructor(private http: HttpClient) { }
 
   postExpense(expenseDto: any): Observable<any> {
-    return this.http.post(BASIC_URL + "api/expense", expenseDto)
+    return this.http.post(BASIC_URL + "api/auth/expense", expenseDto)
   }
 
   getAllExpenses(page: number, sort: string): Observable<any> {
-    return this.http.get(BASIC_URL + `api/expense/all?page=${page}&sort=${sort}`)
+    return this.http.get(BASIC_URL + `api/auth/expense/all?page=${page}&sort=${sort}`)
   }
 
   deleteExpense(id: number): Observable<any> {
-    return this.http.delete(BASIC_URL + `api/expense/${id}`)
+    return this.http.delete(BASIC_URL + `api/auth/expense/${id}`)
   }
 
   getExpenseId(id: number): Observable<any> {
-    return this.http.get(BASIC_URL + `api/expense/${id}`)
+    return this.http.get(BASIC_URL + `api/auth/expense/${id}`)
   }
 
   updateExpense(id: number, expenseDto: any): Observable<any> {
-    return this.http.put(BASIC_URL + `api/expense/${id}`, expenseDto
+    return this.http.put(BASIC_URL + `api/auth/expense/${id}`, expenseDto
     )
   }
 }

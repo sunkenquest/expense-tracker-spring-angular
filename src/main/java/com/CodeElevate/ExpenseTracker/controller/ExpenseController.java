@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/expense")
+@RequestMapping("api/auth/expense")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class ExpenseController {

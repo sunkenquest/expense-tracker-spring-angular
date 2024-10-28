@@ -14,6 +14,6 @@ export class LoginService {
   ) { }
 
   postLogin(loginDTO: any): Observable<any> {
-    return this.http.post(BASIC_URL + "api/user/login", loginDTO)
+    return this.http.post(BASIC_URL + "api/guest/user/login", loginDTO)
   }
 }

@@ -12,10 +12,10 @@ export class StatsService {
   constructor(private http: HttpClient) { }
 
   getStats(): Observable<any> {
-    return this.http.get(BASIC_URL + "api/stats")
+    return this.http.get(BASIC_URL + "api/auth/stats")
   }
 
   getChart(): Observable<any> {
-    return this.http.get(BASIC_URL + "api/stats/chart")
+    return this.http.get(BASIC_URL + "api/auth/stats/chart")
   }
 }

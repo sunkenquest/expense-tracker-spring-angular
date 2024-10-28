@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/income")
+@RequestMapping("/api/auth/income")
 @RequiredArgsConstructor
 @CrossOrigin
 public class IncomeController {
