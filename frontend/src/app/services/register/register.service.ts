@@ -14,6 +14,6 @@ export class RegisterService {
   ) { }
 
   postRegister(registerDTO: any): Observable<any> {
-    return this.http.post(BASIC_URL + "api/user/register", registerDTO)
+    return this.http.post(BASIC_URL + "api/guest/user/register", registerDTO)
   }
 }

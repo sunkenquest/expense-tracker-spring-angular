@@ -14,23 +14,22 @@ export class IncomeService {
   ) { }
 
   postIncome(incomeDTO: any): Observable<any> {
-    return this.http.post(BASIC_URL + "api/income", incomeDTO)
+    return this.http.post(BASIC_URL + "api/auth/income", incomeDTO)
   }
 
   getAllIncomes(page: number, sort: string): Observable<any> {
-    return this.http.get(BASIC_URL + `api/income/all?page=${page}&sort=${sort}`)
+    return this.http.get(BASIC_URL + `api/auth/income/all?page=${page}&sort=${sort}`)
   }
 
   getIncomeById(id: number): Observable<any> {
-    return this.http.get(BASIC_URL + `api/income/${id}`)
+    return this.http.get(BASIC_URL + `api/auth/income/${id}`)
   }
 
   updateIncome(id: number, incomeDTO: any): Observable<any> {
-    return this.http.put(BASIC_URL + `api/income/${id}`, incomeDTO
-    )
+    return this.http.put(BASIC_URL + `api/auth/income/${id}`, incomeDTO)
   }
 
   deleteIncome(id: number): Observable<any> {
-    return this.http.delete(BASIC_URL + `api/income/${id}`)
+    return this.http.delete(BASIC_URL + `api/auth/income/${id}`)
   }
 }
