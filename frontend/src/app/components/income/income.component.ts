@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { IncomeService } from 'src/app/services/income/income.service';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-income',
@@ -17,6 +18,7 @@ export class IncomeComponent {
   pageSize: number = 10;
   total: number = 0;
   sort: string = "asc";
+  @ViewChild(ConfirmModalComponent) modal!: ConfirmModalComponent;
 
   constructor(
     private fb: FormBuilder,
@@ -75,5 +77,9 @@ export class IncomeComponent {
     }
 
     this.getAllIncomes(pageIndex, sort);
+  }
+
+  onDeleteClick(): void {
+    this.modal.show();
   }
 }
