@@ -33,9 +33,10 @@ export class RegisterComponent implements OnInit {
 
   submitForm(): void {
     if (this.registerForm.valid) {
-      this.registerService.postRegister(this.registerForm.value)
-      this.message.success("Register successfully", { nzDuration: 5000 })
-      this.router.navigate(['/dashboard']);
+      this.registerService.postRegister(this.registerForm.value).subscribe(res => {
+        this.message.success("Register successfully", { nzDuration: 5000 })
+        this.router.navigate(['/dashboard']);
+      })
     } else {
       this.message.error("Error while registering in", { nzDuration: 5000 })
     }
