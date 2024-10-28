@@ -20,7 +20,6 @@ export class SiderComponent {
   }
 
   onConfirmLogout(): void {
-    //WIP: add service
     this.message.info("Logout successfully", { nzDuration: 5000 })
     this.router.navigate(['/']);
   }
