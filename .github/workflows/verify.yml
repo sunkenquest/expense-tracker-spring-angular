@@ -1,0 +1,35 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+name: Verify the PR
+run-name: ${{ github.actor }} is verifying the PR.
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'  # You can specify 'zulu' if you prefer that distribution
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Build and test
+        run: mvn clean install
